@@ -1,0 +1,8 @@
+node_modules/
+*.mp4
+out/
+vid/
+__pycache__/
+*.pyc
+*.bak
+.DS_Store

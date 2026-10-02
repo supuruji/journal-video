@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>__TITLE__</title>
+<meta name="description" content="__DESC__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Noto+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Theme-aware notebook page: brand bar, paper picker, left-to-right mind map built from each abstract. */
+:root{
+  --bg:#f6f5f2; --panel:#fff; --card:#fff; --card2:#f4f3ef;
+  --fg:#1c2230; --fg2:#3f465c; --muted:#6b7486; --faint:#9aa1b2; --line:#e4e2da; --line2:#d9d7cf;
+  --p0:#9a5cc4; --p1:#c74da0; --p2:#28b2c4; --p3:#ef7a4e; --p4:#7a6bd6; --p5:#e6b24a;
+  --grad:linear-gradient(100deg,#9a5cc4,#c74da0 40%,#28b2c4 78%,#ef7a4e);
+  --font-en:'Fraunces',Georgia,serif; --font-kr:'Noto Sans KR','Noto Sans',system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b0e18;--panel:#121728;--card:#161c30;--card2:#111627;--fg:#eef0f7;--fg2:#c4c9db;
+  --muted:#99a0bd;--faint:#5a6187;--line:#262d46;--line2:#2e3654;color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#0b0e18;--panel:#121728;--card:#161c30;--card2:#111627;--fg:#eef0f7;--fg2:#c4c9db;
+  --muted:#99a0bd;--faint:#5a6187;--line:#262d46;--line2:#2e3654;color-scheme:dark;}
+*{box-sizing:border-box}html{height:auto}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-kr);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px clamp(14px,4vw,32px);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .l{display:flex;align-items:center;gap:11px;min-width:0}.topbar img{height:19px;display:block}
+.topbar .t{font-size:12.5px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;padding-left:11px;border-left:1px solid var(--line);white-space:nowrap}
+.themebtn{appearance:none;background:transparent;border:1px solid var(--line);border-radius:9px;width:34px;height:34px;cursor:pointer;color:var(--fg);font-size:15px;line-height:1;flex:none}
+.themebtn:hover{background:var(--card2)}
+.wrap{max-width:1180px;margin:0 auto;padding:clamp(16px,3vw,26px) clamp(14px,4vw,32px) 40px}
+.lead{margin:4px 0 16px}
+.lead h1{font-family:var(--font-en);font-weight:600;font-size:clamp(22px,3.3vw,32px);margin:0 0 6px;letter-spacing:-.01em}
+.lead p{margin:0;color:var(--muted);font-size:13.5px}
+.picker{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.tab{flex:none;display:flex;align-items:center;gap:9px;padding:9px 14px;border-radius:11px;cursor:pointer;background:var(--panel);border:1px solid var(--line);transition:border-color .2s,transform .1s}
+.tab:hover{transform:translateY(-1px)}
+.tab .n{font-family:var(--font-en);font-weight:600;font-size:13px;color:#fff;width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex:none}
+.tab .tx{font-size:12.5px;color:var(--fg2);font-weight:500;white-space:nowrap}
+.tab.on{border-color:transparent;box-shadow:0 0 0 2px var(--tc) inset,0 4px 14px -6px var(--tc)}.tab.on .tx{color:var(--fg)}
+.dhead{margin:16px 2px 6px}
+.dhead .num{font-family:var(--font-en);font-weight:600;font-size:13px;color:var(--ac);letter-spacing:.04em}
+.dhead h2{font-family:var(--font-en);font-weight:600;font-size:clamp(18px,2.4vw,25px);margin:4px 0 5px;line-height:1.2;text-wrap:balance;letter-spacing:-.01em}
+.dhead .by{font-size:13px;color:var(--muted)}.dhead .by b{color:var(--fg2);font-weight:600}
+.mapwrap{position:relative;margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:auto;padding:10px}
+.mapcanvas{position:relative;transform-origin:top left}
+.svg{position:absolute;inset:0;overflow:visible;pointer-events:none}
+.node{position:absolute;border-radius:12px;padding:9px 12px;font-size:13px;line-height:1.36;background:var(--card);border:1px solid var(--line2);box-shadow:0 1px 2px rgba(0,0,0,.05);opacity:0;transform:translateX(-6px);transition:opacity .4s ease,transform .4s ease}
+.node.show{opacity:1;transform:none}
+.node.root{font-family:var(--font-en);font-weight:600;font-size:15px;color:#fff;border:0;background:linear-gradient(120deg,var(--ac),color-mix(in srgb,var(--ac) 55%,#000 6%));box-shadow:0 8px 22px -8px var(--ac);display:flex;align-items:center}
+.node.branch{font-weight:600;color:var(--fg);border-left:4px solid var(--c);padding-left:12px}
+.node.leaf{background:var(--card2);color:var(--fg2);font-size:12.5px;font-weight:400}
+.node.leaf .dotc{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--c);margin-right:7px;vertical-align:middle}
+.toolbar{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.hint{font-size:12px;color:var(--faint)}
+.minibtn{appearance:none;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:7px 13px;font-family:var(--font-kr);font-size:12.5px;color:var(--fg2);cursor:pointer}
+.minibtn:hover{background:var(--card2)}
+details.abs{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+details.abs>summary{cursor:pointer;list-style:none;padding:14px 18px;font-size:13px;font-weight:600;color:var(--fg2);display:flex;align-items:center;gap:9px}
+details.abs>summary::-webkit-details-marker{display:none}
+details.abs>summary .chev{margin-left:auto;transition:transform .2s;color:var(--muted)}
+details.abs[open]>summary .chev{transform:rotate(90deg)}
+details.abs .body{padding:0 18px 18px;font-family:var(--font-en);font-size:15px;line-height:1.7;color:var(--fg2);border-top:1px solid var(--line)}
+details.abs .kw{display:inline-block;margin:10px 6px 0 0;font-family:var(--font-kr);font-size:12px;color:var(--fg2);background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.foot{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foot a{color:var(--p2);text-decoration:none}
+@media (prefers-reduced-motion:reduce){.node{transition:none}}
+</style>
+
+<div class="topbar">
+  <div class="l"><img id="logo" alt=""><span class="t" id="tag"></span></div>
+  <button class="themebtn" id="theme" aria-label="theme">◐</button>
+</div>
+<div class="wrap">
+  <div class="lead"><h1 id="leadH1"></h1><p id="leadP"></p></div>
+  <div class="picker" id="picker"></div>
+  <div class="dhead" id="dhead"></div>
+  <div class="mapwrap" id="mapwrap"><div class="mapcanvas" id="canvas"><svg class="svg" id="svg"></svg></div></div>
+  <div class="toolbar"><button class="minibtn" id="fitbtn"></button><span class="hint" id="hint"></span></div>
+  <details class="abs" id="absbox"><summary><span id="absLabel"></span> <span class="chev">›</span></summary><div class="body" id="absbody"></div></details>
+  <div class="foot"><span id="footName"></span><a id="footSite" target="_blank" rel="noopener"></a></div>
+</div>
+
+<script>
+const D = __DATA__;
+const RAW=['#9a5cc4','#c74da0','#28b2c4','#ef7a4e','#7a6bd6','#e6b24a'];
+const U=D.ui;
+document.getElementById('logo').src=D.logo;
+document.getElementById('tag').textContent=U.tag;
+document.getElementById('leadH1').textContent=U.leadH1;
+document.getElementById('leadP').innerHTML=U.leadP;
+document.getElementById('hint').textContent=U.hintScroll;
+document.getElementById('fitbtn').textContent=U.fit;
+document.getElementById('absLabel').textContent=U.absLabel;
+document.getElementById('footName').textContent=U.footName;
+const fs=document.getElementById('footSite'); fs.textContent=D.site; fs.href='https://'+D.site;
+document.getElementById('theme').title=U.theme;
+const PAPERS=D.papers;
+
+const picker=document.getElementById('picker');
+PAPERS.forEach((p,i)=>{const t=document.createElement('button');t.className='tab';t.style.setProperty('--tc',RAW[p.accent%6]);
+  t.innerHTML='<span class="n" style="background:'+RAW[p.accent%6]+'">'+p.num+'</span><span class="tx">'+p.short+'</span>';
+  t.onclick=()=>select(i);picker.appendChild(t);p.tab=t;});
+
+let cur=0,fitMode=true;
+const canvas=document.getElementById('canvas'),svg=document.getElementById('svg'),mapwrap=document.getElementById('mapwrap');
+function select(i){cur=i;const p=PAPERS[i],ac=RAW[p.accent%6];
+  PAPERS.forEach((q,j)=>q.tab.classList.toggle('on',j===i));
+  document.documentElement.style.setProperty('--ac',ac);
+  const dh=document.getElementById('dhead');dh.style.setProperty('--ac',ac);
+  dh.innerHTML='<div class="num">'+U.articleTag+' '+p.num+'</div><h2>'+p.titleEn+'</h2><div class="by"><b>'+p.author+'</b> · '+p.aff+' · '+p.page+'</div>';
+  document.getElementById('absbody').innerHTML='<p style="margin:14px 0 0">'+p.abstract+'</p><div>'+(p.kw||[]).map(k=>'<span class="kw">#'+k+'</span>').join('')+'</div>';
+  render();}
+function render(){const p=PAPERS[cur],ac=RAW[p.accent%6];
+  canvas.querySelectorAll('.node').forEach(n=>n.remove());svg.innerHTML='';canvas.style.transform='none';
+  const COLW=[210,186,232],GAPX=58,VGAP=12,BGAP=26,PAD=8;
+  const x0=PAD,x1=PAD+COLW[0]+GAPX,x2=PAD+COLW[0]+GAPX+COLW[1]+GAPX;
+  function mk(cls,html,w,ex){const d=document.createElement('div');d.className='node '+cls;d.style.width=w+'px';d.innerHTML=html;if(ex)Object.assign(d.style,ex);canvas.appendChild(d);return d;}
+  const rootEl=mk('root',p.root,COLW[0],{'--ac':ac});const brEls=[],leafEls=[];
+  p.branches.forEach((b,bi)=>{const c=RAW[(p.accent+bi)%6];const be=mk('branch',b.t,COLW[1],{'--c':c});be._c=c;brEls.push(be);
+    leafEls.push(b.l.map(t=>mk('leaf','<span class="dotc"></span>'+t,COLW[2],{'--c':c})));});
+  const H=el=>el.offsetHeight;let cursor=PAD,slots=[];
+  p.branches.forEach((b,bi)=>{const les=leafEls[bi];let lb=0;les.forEach((le,k)=>{lb+=H(le);if(k<les.length-1)lb+=VGAP;});
+    const bh=H(brEls[bi]);const slot=Math.max(lb,bh);slots.push({top:cursor,slot,lb,bh,les});cursor+=slot+BGAP;});
+  const totalH=Math.max(cursor-BGAP,0)+PAD;
+  slots.forEach((s,bi)=>{const by=s.top+(s.slot-s.bh)/2;brEls[bi].style.left=x1+'px';brEls[bi].style.top=by+'px';brEls[bi]._cy=by+s.bh/2;
+    let ly=s.top+(s.slot-s.lb)/2;s.les.forEach(le=>{const lh=H(le);le.style.left=x2+'px';le.style.top=ly+'px';le._cy=ly+lh/2;ly+=lh+VGAP;});});
+  const rh=H(rootEl),rootY=Math.max(PAD,(totalH-rh)/2);rootEl.style.left=x0+'px';rootEl.style.top=rootY+'px';
+  const rootCY=rootY+rh/2,rootRX=x0+COLW[0];
+  const cw=x2+COLW[2]+PAD,ch=totalH+PAD;canvas.style.width=cw+'px';canvas.style.height=ch+'px';
+  svg.setAttribute('viewBox','0 0 '+cw+' '+ch);svg.setAttribute('width',cw);svg.setAttribute('height',ch);
+  function curve(ax,ay,bx,by,color){const mx=(ax+bx)/2;const pa=document.createElementNS('http://www.w3.org/2000/svg','path');
+    pa.setAttribute('d','M'+ax+' '+ay+' C '+mx+' '+ay+' '+mx+' '+by+' '+bx+' '+by);pa.setAttribute('fill','none');
+    pa.setAttribute('stroke',color);pa.setAttribute('stroke-width','2');pa.setAttribute('stroke-opacity','.55');pa.setAttribute('stroke-linecap','round');svg.appendChild(pa);}
+  brEls.forEach((be,bi)=>{curve(rootRX,rootCY,x1,be._cy,be._c);leafEls[bi].forEach(le=>curve(x1+COLW[1],be._cy,x2,le._cy,be._c));});
+  applyFit(cw,ch);const order=[rootEl];brEls.forEach((be,bi)=>{order.push(be);leafEls[bi].forEach(le=>order.push(le));});
+  order.forEach((n,k)=>setTimeout(()=>n.classList.add('show'),40+k*22));}
+function applyFit(cw,ch){const avail=mapwrap.clientWidth-20;
+  if(fitMode){let s=Math.min(1,avail/cw);s=Math.max(s,0.5);canvas.style.transform='scale('+s+')';mapwrap.style.height=(ch*s+20)+'px';
+    document.getElementById('hint').textContent=s<1?U.hintFit:'';}
+  else{canvas.style.transform='none';mapwrap.style.height='';document.getElementById('hint').textContent=U.hintScroll;}}
+document.getElementById('fitbtn').onclick=function(){fitMode=!fitMode;this.textContent=fitMode?U.fit:U.fitBack;render();};
+const root=document.documentElement;
+document.getElementById('theme').onclick=()=>{const c=root.getAttribute('data-theme');
+  const dark=c?c==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;root.setAttribute('data-theme',dark?'light':'dark');render();};
+let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(render,180);});
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(()=>render());}
+select(0);
+</script>

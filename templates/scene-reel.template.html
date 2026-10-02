@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>JEARC 3·2 소개 도해</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Noto+Serif+KR:wght@500;600;900&family=Noto+Serif+SC:wght@500;600;900&display=swap">
+<style>
+/* Layout: cinematic 16:9 stage, auto-advancing scene reel; large index seal + serif title stack, teal rule, one-line thesis. Committed dark (scholarly). */
+:root{
+  color-scheme: dark;
+  --bg:#070f11; --panel:#0b1618; --frame:#000;
+  --fg:#eef3f1; --muted:#9db1ad; --faint:#64807c;
+  --accent:#12b6c8; --accent-deep:#0a7e8c; --accent-soft:rgba(18,182,200,.14);
+  --gold:#c7a867; --gold-soft:rgba(199,168,103,.14);
+  --line:rgba(255,255,255,.12);
+  --font-latin:"Cormorant Garamond","Noto Serif KR",Georgia,serif;
+  --font-ko:"Noto Serif KR",serif;
+  --font-zh:"Noto Serif SC",serif;
+  --font-cjk:var(--font-ko);
+  --font-ui:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+.lang-ko{--font-cjk:var(--font-ko)}
+.lang-zh{--font-cjk:var(--font-zh)}
+.lang-en{--font-cjk:var(--font-latin)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-ui);
+  min-height:100%;display:flex;flex-direction:column;align-items:center;}
+#player{width:100%;max-width:1400px;padding:18px 16px 28px;display:flex;flex-direction:column;gap:14px}
+
+/* ---- stage ---- */
+#stagewrap{position:relative;width:100%;aspect-ratio:16/9;background:var(--frame);
+  border-radius:10px;overflow:hidden;box-shadow:0 24px 70px -30px #000,0 0 0 1px var(--line);
+  display:grid;place-items:center}
+#stage{position:relative;width:100%;height:100%;container-type:size;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 85% 12%, rgba(18,182,200,.10), transparent 55%),
+    radial-gradient(90% 80% at 8% 92%, rgba(199,168,103,.08), transparent 55%),
+    linear-gradient(160deg,#0a1517 0%,#070f11 55%,#060b0d 100%);}
+#stagewrap:fullscreen{width:100vw;height:100vh;border-radius:0;background:#000}
+#stagewrap:fullscreen #stage{height:100%;width:auto;aspect-ratio:16/9;max-width:100vw;max-height:100vh}
+
+/* subtle grid texture + vignette */
+#stage::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 46px);
+  mask:radial-gradient(130% 110% at 50% 40%,#000 55%,transparent 100%)}
+#stage::after{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 18cqw 4cqw rgba(0,0,0,.55)}
+
+/* progress + meta rails inside stage */
+#bar{position:absolute;left:0;top:0;height:.5cqh;background:var(--accent);width:0;z-index:6;
+  box-shadow:0 0 12px var(--accent)}
+#brand{position:absolute;top:4.2cqh;left:5cqw;z-index:5;display:flex;align-items:center;gap:1.2cqw;
+  font-family:var(--font-latin);letter-spacing:.14em;color:var(--muted);font-size:1.5cqw;text-transform:uppercase}
+#brand .dot{width:.8cqw;height:.8cqw;border-radius:50%;background:var(--accent)}
+#brand b{color:var(--fg);font-weight:600}
+#counter{position:absolute;top:4.2cqh;right:5cqw;z-index:5;font-family:var(--font-latin);
+  color:var(--faint);font-size:1.5cqw;letter-spacing:.12em}
+#counter b{color:var(--gold)}
+
+/* ---- scene base ---- */
+.scene{position:absolute;inset:0;display:none;padding:12cqh 5.5cqw 8cqh}
+.scene.active{display:block}
+.rise{opacity:0;transform:translateY(2.2cqh)}
+.scene.run .rise{opacity:1;transform:none;transition:opacity .9s ease,transform .9s cubic-bezier(.2,.75,.2,1);transition-delay:var(--d,0s)}
+.draw{transform:scaleX(0);transform-origin:left}
+.scene.run .draw{transform:scaleX(1);transition:transform 1s cubic-bezier(.6,0,.2,1);transition-delay:var(--d,0s)}
+@media (prefers-reduced-motion:reduce){
+  .rise,.scene.run .rise{opacity:1;transform:none;transition:none}
+  .draw,.scene.run .draw{transform:none;transition:none}
+}
+/* shot mode: 프레임 캡처용 — 애니메이션 없이 최종 상태 고정 */
+.shot .rise{opacity:1!important;transform:none!important;transition:none!important}
+.shot .draw{transform:none!important;transition:none!important}
+/* shot mode: 스테이지가 뷰포트(1920×1080)를 꽉 채우도록 */
+body.shotmode{overflow:hidden}
+body.shotmode #player{max-width:none!important;padding:0!important;margin:0!important;gap:0!important}
+body.shotmode #controls,body.shotmode .hint{display:none!important}
+body.shotmode #stagewrap{width:100vw!important;height:100vh!important;border-radius:0!important;aspect-ratio:auto!important;box-shadow:none!important}
+
+/* watermark index seal */
+.seal{position:absolute;right:4cqw;bottom:5cqh;font-family:var(--font-latin);font-weight:600;
+  font-size:46cqh;line-height:.8;color:transparent;-webkit-text-stroke:.18cqw var(--gold-soft);
+  z-index:1;user-select:none;letter-spacing:-.02em}
+
+/* paper scene content */
+.eyebrow{display:inline-flex;align-items:center;gap:1cqw;font-family:var(--font-cjk);
+  font-size:1.9cqw;letter-spacing:.06em;color:var(--accent);margin-bottom:2.4cqh}
+.eyebrow .num{font-family:var(--font-latin);font-weight:600;color:var(--gold);font-size:2.1cqw}
+.eyebrow .bar{width:3cqw;height:1px;background:var(--accent)}
+.en-title{font-family:var(--font-latin);font-style:italic;font-weight:500;color:var(--muted);
+  font-size:2.2cqw;line-height:1.25;max-width:72cqw;margin-bottom:1.4cqh;text-wrap:balance}
+.title{position:relative;z-index:2;font-family:var(--font-cjk);font-weight:900;color:var(--fg);
+  font-size:4.6cqw;line-height:1.22;max-width:78cqw;text-wrap:balance;margin:0}
+.rule{height:.34cqh;width:14cqw;background:linear-gradient(90deg,var(--accent),transparent);
+  margin:3cqh 0 3cqh;border-radius:2px}
+.thesis{position:relative;z-index:2;font-family:var(--font-cjk);font-weight:500;color:#d4e0dd;
+  font-size:2.35cqw;line-height:1.72;max-width:70cqw}
+.byline{position:absolute;left:5.5cqw;bottom:6.5cqh;z-index:2;display:flex;align-items:baseline;gap:1.6cqw;
+  font-family:var(--font-cjk)}
+.byline .who{font-size:2.3cqw;font-weight:600;color:var(--fg)}
+.byline .lat{font-family:var(--font-latin);font-size:1.9cqw;color:var(--accent);letter-spacing:.04em}
+.byline .aff{font-family:var(--font-latin);font-size:1.7cqw;font-style:italic;color:var(--faint)}
+
+/* title / overview / closing scenes */
+.center{display:flex;flex-direction:column;justify-content:center;height:100%;padding:0 9cqw;text-align:center;align-items:center}
+.center.left{text-align:left;align-items:flex-start;padding:0 7cqw}
+.kicker{font-family:var(--font-latin);text-transform:uppercase;letter-spacing:.42em;
+  color:var(--accent);font-size:1.7cqw;margin-bottom:3cqh}
+.big{font-family:var(--font-latin);font-weight:600;color:var(--fg);font-size:7.2cqw;line-height:1.02;
+  margin:0;text-wrap:balance}
+.big .amp{color:var(--gold)}
+.sub-cjk{font-family:var(--font-cjk);font-weight:600;color:var(--fg);font-size:3.4cqw;margin:2.6cqh 0 0}
+.vol{font-family:var(--font-latin);font-size:2.4cqw;color:var(--muted);letter-spacing:.14em;margin-top:3.4cqh}
+.vol b{color:var(--gold);font-weight:600}
+.pub{font-family:var(--font-cjk);font-size:1.9cqw;color:var(--faint);margin-top:4.4cqh;letter-spacing:.04em}
+.lead{font-family:var(--font-cjk);font-weight:500;color:#d7e2df;font-size:2.7cqw;line-height:1.7;
+  max-width:78cqw;margin:0 auto}
+.count-hero{font-family:var(--font-latin);font-weight:600;color:var(--gold);font-size:12cqw;line-height:1}
+.count-label{font-family:var(--font-cjk);color:var(--muted);font-size:2.2cqw;letter-spacing:.1em;margin-top:-1cqh}
+.sign{font-family:var(--font-cjk);color:var(--muted);font-size:2cqw;margin-top:4cqh;line-height:1.7}
+.sign b{color:var(--fg);font-weight:600}
+
+/* ---- controls ---- */
+#controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center}
+.group{display:flex;align-items:center;gap:6px;background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;padding:6px}
+button{font-family:var(--font-ui);font-size:14px;color:var(--fg);background:transparent;border:0;
+  border-radius:8px;padding:9px 13px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  transition:background .15s,color .15s}
+button:hover{background:rgba(255,255,255,.06)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#play{background:var(--accent-deep);color:#eafcff;font-weight:600;min-width:104px;justify-content:center}
+#play:hover{background:var(--accent)}
+.lang button{padding:9px 16px;font-weight:600;color:var(--muted)}
+.lang button.on{background:var(--accent-soft);color:var(--accent)}
+#sound.on{color:var(--accent)}
+.hint{color:var(--faint);font-size:12.5px;text-align:center;max-width:640px;line-height:1.6;font-family:var(--font-ui)}
+.hint kbd{font-family:var(--font-ui);background:var(--panel);border:1px solid var(--line);border-bottom-width:2px;
+  border-radius:5px;padding:1px 6px;font-size:11px;color:var(--muted)}
+svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<div id="player">
+  <div id="stagewrap">
+    <div id="stage" class="lang-ko">
+      <div id="bar"></div>
+      <div id="brand"><span class="dot"></span><span><b>JEARC</b> · East Asian Religions &amp; Cultures</span></div>
+      <div id="counter"></div>
+      <!-- scenes injected here -->
+    </div>
+  </div>
+
+  <div id="controls">
+    <div class="group lang" role="group" aria-label="language">
+      <button id="ko" class="on" type="button">한국어</button>
+      <button id="zh" type="button">中文</button>
+      <button id="en" type="button">EN</button>
+    </div>
+    <div class="group">
+      <button id="prev" type="button" aria-label="이전"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button id="play" type="button"><svg id="playicon" viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z" fill="currentColor" stroke="none"/></svg><span id="playlabel">재생</span></button>
+      <button id="next" type="button" aria-label="다음"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button id="restart" type="button" aria-label="처음부터"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"/></svg></button>
+    </div>
+    <div class="group">
+      <button id="sound" type="button" aria-pressed="true"><svg id="soundicon" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 8.5a4 4 0 0 1 0 7M18.5 6a7 7 0 0 1 0 12"/></svg><span id="soundlabel">음성 켜짐</span></button>
+      <button id="full" type="button"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>전체화면</span></button>
+    </div>
+  </div>
+  <p class="hint"><b>음성 내레이션</b> 포함 — <b>재생</b>을 누르면 장면마다 음성으로 읽어줍니다(브라우저 음성 사용). <b>전체화면</b>으로 두고 화면 녹화(시스템 소리 포함)하면 그대로 유튜브 영상이 됩니다 · <kbd>Space</kbd> 재생/정지 · <kbd>←</kbd> <kbd>→</kbd> 이동 · <kbd>L</kbd> 언어 전환 · <kbd>M</kbd> 음소거 · <kbd>F</kbd> 전체화면</p>
+</div>
+
+<script>
+/* ===========================================================================
+   아래 DATA 블록(UI · PAPERS · EDITOR · title/overview/closing 카피)만 교체한다.
+   NARRATION / RENDER / PLAYER 엔진은 그대로 둔다.  각 논문: n, tag{ko,zh}, en,
+   who{ko,zh}, lat(로마자), aff(소속·없으면 ""), t{ko,zh}(제목), s{ko,zh}(핵심 논지).
+   · 음성: 기본 브라우저 TTS. 클로바 mp3를 쓰려면 scripts/clova_voice.py로
+     window.__ZH_AUDIO / __KO_AUDIO = {장면index:"data:audio/mp3;..."} 를 메인 스크립트 앞에 인라인 주입.
+   · 샷 모드: URL 해시 #shot{n} → 해당 장면을 애니메이션 없이 1920×1080 풀블리드로 정적 렌더(프레임 캡처용).
+   · 시작언어: window.__START_LANG="ko"|"zh" 또는 해시 #ko/#zh.
+   아래는 JEARC Vol 3.2 예시 데이터(참고용).
+   =========================================================================== */
+/* ======================= DATA ======================= */
+const D = __DATA__;
+const COPY = D.copy || {};
+const UI = D.ui;
+const PAPERS = D.papers;
+const EDITOR = D.editor;
+
+/* scene list: title, overview, 17 papers, closing */
+const SCENES = [{type:"title"},{type:"overview"}, ...PAPERS.map(p=>({type:"paper",p})), {type:"closing"}];
+const DUR = D.dur || {title:6500, overview:8500, paper:9000, closing:9500};
+
+/* ======================= RENDER ======================= */
+const stage=document.getElementById("stage");
+const barEl=document.getElementById("bar");
+const counterEl=document.getElementById("counter");
+let lang="ko";
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function pad(n){return String(n).padStart(2,"0")}
+
+function L(ko,zh,en){ return lang==="ko"?ko:(lang==="zh"?zh:(en!==undefined?en:zh)); }
+function Lf(o){ if(!o) return ""; return o[lang] || o.en || o.ko || o.zh || ""; }
+function sceneHTML(sc){
+  if(sc.type==="title"){
+    const c=COPY[lang]||COPY.en||{};
+    return `<div class="center">
+      <div class="kicker rise" style="--d:.1s">${c.titleKicker||""}</div>
+      <h1 class="big rise" style="--d:.3s">${c.titleBig||""}</h1>
+      <div class="sub-cjk rise" style="--d:.6s">${c.titleSub||""}</div>
+      <div class="vol rise" style="--d:.9s">${c.titleVol||""}</div>
+      <div class="pub rise" style="--d:1.15s">${c.titlePub||""}</div>
+    </div>`;
+  }
+  if(sc.type==="overview"){
+    const c=COPY[lang]||COPY.en||{};
+    return `<div class="center">
+      <div class="kicker rise" style="--d:.1s">${c.ovKicker||""}</div>
+      <div class="count-hero rise" style="--d:.3s">${c.ovCount||""}</div>
+      <div class="count-label rise" style="--d:.5s">${c.ovLabel||""}</div>
+      <div class="rule rise" style="--d:.7s;align-self:center"></div>
+      <p class="lead rise" style="--d:.9s">${c.ovLead||""}</p>
+    </div>`;
+  }
+  if(sc.type==="closing"){
+    const c=COPY[lang]||COPY.en||{};
+    return `<div class="center">
+      <div class="kicker rise" style="--d:.1s">${c.clKicker||""}</div>
+      <h2 class="big rise" style="--d:.3s">${c.clBig||""}</h2>
+      <div class="sub-cjk rise" style="--d:.55s">${c.clSub||""}</div>
+      <div class="sign rise" style="--d:.85s"><b>${esc(Lf(EDITOR.who))}</b><br>${esc(Lf(EDITOR.role))} · ${EDITOR.date}</div>
+      <div class="pub rise" style="--d:1.1s">${c.clPub||""}</div>
+    </div>`;
+  }
+  // paper
+  const p=sc.p;
+  const aff = p.aff ? `<span class="aff">${esc(p.aff)}</span>` : "";
+  return `<div class="seal rise" style="--d:.15s">${pad(p.n)}</div>
+    <div class="eyebrow rise" style="--d:.1s"><span class="num">${pad(p.n)}</span><span class="bar"></span>${esc(Lf(p.tag))}</div>
+    ${lang!=="en"?`<div class="en-title rise" style="--d:.28s">${esc(p.en)}</div>`:""}
+    <h2 class="title rise" style="--d:.42s">${esc(lang==="en"?(p.en||Lf(p.t)):Lf(p.t))}</h2>
+    <div class="rule draw" style="--d:.7s"></div>
+    <p class="thesis rise" style="--d:.85s">${Lf(p.s)}</p>
+    <div class="byline rise" style="--d:1.05s"><span class="who">${esc(Lf(p.who))}</span><span class="lat">${esc(p.lat)}</span>${aff}</div>`;
+}
+
+/* ======================= NARRATION (Web Speech TTS) ======================= */
+const synth = window.speechSynthesis || null;
+let soundOn = true, voices = [];
+function loadVoices(){ try{ voices = synth ? synth.getVoices() : []; }catch(e){ voices=[]; } }
+if(synth){ loadVoices(); synth.onvoiceschanged = loadVoices; }
+function pickVoice(l){
+  const want = l==="zh" ? ["zh-cn","zh-sg","zh-hk","zh-tw","zh"] : (l==="en" ? ["en-us","en-gb","en"] : ["ko-kr","ko"]);
+  for(const w of want){ const v=voices.find(v=>(v.lang||"").toLowerCase().replace("_","-").startsWith(w)); if(v) return v; }
+  return null;
+}
+/* 내레이션 텍스트: 괄호 속 한자·책이름 괄호를 정리해 자연스럽게 읽히게 한다 */
+function clean(t){
+  return (t||"").replace(/《|》|〈|〉|「|」|『|』/g,"")
+    .replace(/\s*[—–-]\s*/g," , ")
+    .replace(/\(([㐀-鿿]+)\)/g,"")   // 한글 뒤 한자병기 제거
+    .replace(/（[㐀-鿿]+）/g,"")
+    .replace(/\s{2,}/g," ").trim();
+}
+function narrText(sc,l){
+  if(sc.type==="title") return (COPY[l]||COPY.en||{}).titleNarr||"";
+  if(sc.type==="overview") return (COPY[l]||COPY.en||{}).ovNarr||"";
+  if(sc.type==="closing") return (COPY[l]||COPY.en||{}).clNarr||"";
+  const p=sc.p;
+  const nth = l==="ko" ? `${p.n}번. ` : (l==="en" ? `No. ${p.n}. ` : `第${p.n}篇。`);
+  const pick=(o)=> (o&&(o[l]||o.en||o.ko||o.zh))||"";
+  const t = l==="en" ? (p.en||pick(p.t)) : pick(p.t);
+  return clean(nth + t + ". " + pick(p.s));
+}
+/* 사전 생성 오디오(클로바 등). window.__ZH_AUDIO = {장면index: "data:audio/mp3;base64,..."} */
+const audioEl = new Audio(); audioEl.preload="auto";
+function stopAudio(){ try{ audioEl.pause(); }catch(e){} }
+function clipFor(){ const m = lang==="zh" ? window.__ZH_AUDIO : (lang==="ko" ? window.__KO_AUDIO : (lang==="en" ? window.__EN_AUDIO : null)); return (m && m[idx]) ? m[idx] : null; }
+
+function speakScene(onDone){
+  if(!soundOn){ return false; }
+  const clip = clipFor();
+  if(clip){                                   // ① 사전 생성 오디오(클로바 중국어) 우선
+    try{ synth&&synth.cancel(); }catch(e){}
+    audioEl.src = clip; try{ audioEl.currentTime = 0; }catch(e){}
+    audioEl.onloadedmetadata = ()=>{ if(audioEl.duration && isFinite(audioEl.duration)) curDur = audioEl.duration*1000 + 600; };
+    audioEl.onended = ()=>{ if(onDone) onDone(); };
+    const p = audioEl.play();
+    if(p && p.catch) p.catch(()=>{});          // 자동재생 차단 시 tick 타이머가 진행
+    return true;
+  }
+  if(!synth){ return false; }                  // ② 브라우저 TTS
+  try{ synth.cancel(); }catch(e){}
+  const txt = narrText(SCENES[idx], lang);
+  if(!txt){ return false; }
+  const u = new SpeechSynthesisUtterance(txt);
+  const v = pickVoice(lang); if(v) u.voice=v;
+  u.lang = lang==="zh" ? (v&&v.lang||"zh-CN") : (lang==="en" ? (v&&v.lang||"en-US") : (v&&v.lang||"ko-KR"));
+  u.rate = 0.98; u.pitch = 1.0;
+  u.onend = ()=>{ if(onDone) onDone(); };
+  u.onerror = ()=>{ if(onDone) onDone(); };
+  try{ synth.speak(u); return true; }catch(e){ return false; }
+}
+function estimate(l){ const t=narrText(SCENES[idx],l)||""; return Math.max(4200, Math.min(17000, t.length*185 + 1400)); }
+
+/* ======================= PLAYER ======================= */
+let idx=0, playing=false, elapsed=0, lastTs=0, raf=0, curDur=9000, advanced=false;
+const nodes=[];
+SCENES.forEach(sc=>{const d=document.createElement("section");d.className="scene";nodes.push(d);stage.appendChild(d);});
+
+function baseDur(i){return DUR[SCENES[i].type]||9000}
+
+function render(i,{resume=false}={}){
+  idx=(i+SCENES.length)%SCENES.length;
+  nodes.forEach(n=>{n.classList.remove("active","run")});
+  const n=nodes[idx];
+  n.innerHTML=sceneHTML(SCENES[idx]);
+  n.classList.add("active");
+  counterEl.innerHTML=`<b>${pad(idx+1)}</b> / ${pad(SCENES.length)}`;
+  void n.offsetWidth; n.classList.add("run");
+  if(!resume){elapsed=0; barEl.style.width="0%";}
+  lastTs=performance.now();
+}
+/* show = 화면 전환 + (재생 중이면) 내레이션 시작 */
+function show(i,opts){
+  render(i,opts);
+  advanced=false;
+  const useVoice = synth && soundOn && playing;
+  curDur = useVoice ? estimate(lang) : baseDur(idx);
+  if(playing){
+    if(useVoice){ speakScene(()=>{ if(!advanced){ advanced=true; nextOrStop(); } }); }
+  }
+}
+function nextOrStop(){
+  if(idx===SCENES.length-1){ setPlay(false); }
+  else { show(idx+1); }
+}
+function tick(ts){
+  if(!playing){return;}
+  const dt=ts-lastTs; lastTs=ts; elapsed+=dt;
+  barEl.style.width=Math.min(100,elapsed/curDur*100)+"%";
+  const useVoice = synth && soundOn;
+  const deadline = useVoice ? curDur+3500 : curDur;   // 음성이면 onend가 우선, 아니면 타이머
+  if(!advanced && elapsed>=deadline){ advanced=true; nextOrStop(); }
+  raf=requestAnimationFrame(tick);
+}
+function setPlay(on){
+  playing=on;
+  document.getElementById("playlabel").textContent= on?UI[lang].pause:UI[lang].play;
+  document.getElementById("playicon").innerHTML= on
+    ? '<path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>'
+    : '<path d="M7 5l12 7-12 7z" fill="currentColor" stroke="none"/>';
+  if(on){
+    // 현재 장면부터 (내레이션 포함) 시작
+    advanced=false;
+    const useVoice = synth && soundOn;
+    curDur = useVoice ? estimate(lang) : baseDur(idx);
+    if(useVoice){ speakScene(()=>{ if(!advanced){ advanced=true; nextOrStop(); } }); }
+    lastTs=performance.now(); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick);
+  } else {
+    cancelAnimationFrame(raf);
+    stopAudio(); if(synth){ try{ synth.cancel(); }catch(e){} }
+  }
+}
+function go(delta){ const wasPlaying=playing; show(idx+delta); if(!wasPlaying){ stopAudio(); if(synth){try{synth.cancel();}catch(e){}} } }
+
+function setSound(on){
+  soundOn=on;
+  const b=document.getElementById("sound");
+  b.setAttribute("aria-pressed", on?"true":"false");
+  b.classList.toggle("on", on);
+  document.getElementById("soundlabel").textContent = on?UI[lang].son:UI[lang].soff;
+  document.getElementById("soundicon").innerHTML = on
+    ? '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 8.5a4 4 0 0 1 0 7M18.5 6a7 7 0 0 1 0 12"/>'
+    : '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/>';
+  if(!on){ stopAudio(); if(synth){ try{ synth.cancel(); }catch(e){} } }
+  else if(on && playing){ // 켜면 현재 장면부터 다시 읽기
+    advanced=false; curDur=estimate(lang); elapsed=0; barEl.style.width="0%";
+    speakScene(()=>{ if(!advanced){ advanced=true; nextOrStop(); } }); lastTs=performance.now();
+  }
+}
+
+function setLang(l){
+  lang=l;
+  stage.classList.toggle("lang-zh", l==="zh");
+  stage.classList.toggle("lang-ko", l==="ko");
+  stage.classList.toggle("lang-en", l==="en");
+  stage.style.setProperty("--font-cjk", l==="zh"?"var(--font-zh)":(l==="en"?"var(--font-latin)":"var(--font-ko)"));
+  document.getElementById("ko").classList.toggle("on",l==="ko");
+  document.getElementById("zh").classList.toggle("on",l==="zh");
+  document.getElementById("en").classList.toggle("on",l==="en");
+  document.getElementById("playlabel").textContent= playing?UI[l].pause:UI[l].play;
+  document.querySelector("#full span").textContent=UI[l].full;
+  document.getElementById("soundlabel").textContent= soundOn?UI[l].son:UI[l].soff;
+  document.getElementById("prev").setAttribute("aria-label",UI[l].prev);
+  document.getElementById("next").setAttribute("aria-label",UI[l].next);
+  stopAudio(); if(synth){ try{ synth.cancel(); }catch(e){} }
+  render(idx,{resume:true});                  // 현재 장면 텍스트만 교체(진행도 유지)
+  if(playing){                                 // 재생 중이면 새 언어로 다시 읽기
+    advanced=false; curDur = (synth&&soundOn)?estimate(l):baseDur(idx);
+    if(synth&&soundOn){ speakScene(()=>{ if(!advanced){ advanced=true; nextOrStop(); } }); }
+    lastTs=performance.now();
+  }
+}
+
+/* controls */
+document.getElementById("play").onclick=()=>setPlay(!playing);
+document.getElementById("prev").onclick=()=>{ if(!playing){show(idx-1);} else {show(idx-1);} };
+document.getElementById("next").onclick=()=>{ show(idx+1); if(!playing)setPlay(true); };
+document.getElementById("restart").onclick=()=>{ show(0); setPlay(true); };
+document.getElementById("ko").onclick=()=>setLang("ko");
+document.getElementById("zh").onclick=()=>setLang("zh");
+document.getElementById("en").onclick=()=>setLang("en");
+document.getElementById("sound").onclick=()=>setSound(!soundOn);
+const wrap=document.getElementById("stagewrap");
+document.getElementById("full").onclick=()=>{
+  if(document.fullscreenElement){document.exitFullscreen&&document.exitFullscreen();}
+  else{wrap.requestFullscreen&&wrap.requestFullscreen().catch(()=>{});}
+};
+document.addEventListener("keydown",e=>{
+  if(e.key===" "){e.preventDefault();setPlay(!playing);}
+  else if(e.key==="ArrowRight"){show(idx+1); if(!playing)setPlay(true);}
+  else if(e.key==="ArrowLeft"){show(idx-1);}
+  else if(e.key==="l"||e.key==="L"){setLang(lang==="ko"?"zh":(lang==="zh"?"en":"ko"));}
+  else if(e.key==="m"||e.key==="M"){setSound(!soundOn);}
+  else if(e.key==="f"||e.key==="F"){document.getElementById("full").click();}
+});
+/* 브라우저 탭을 벗어나면 음성 중단 */
+document.addEventListener("visibilitychange",()=>{ if(document.hidden){ stopAudio(); if(synth){ try{synth.cancel();}catch(e){} } } });
+
+/* init — 시작 언어: window.__START_LANG > URL 해시(#zh/#ko) > 기본 ko */
+const _hash=(location.hash||"").replace("#","").toLowerCase();
+const START_LANG = (D.startLang && ["ko","zh","en"].indexOf(D.startLang)>=0) ? D.startLang
+                 : (window.__START_LANG==="zh"||window.__START_LANG==="ko"||window.__START_LANG==="en") ? window.__START_LANG
+                 : (_hash==="zh"||_hash==="ko"||_hash==="en") ? _hash : "ko";
+document.getElementById("sound").classList.add("on");
+const _shotM=(location.hash||"").match(/shot(\d+)/i);
+try{ var _bb=document.querySelector("#brand b"); if(_bb&&D.brandShort) _bb.textContent=D.brandShort;
+     var _bs=document.querySelector("#brand span:last-child"); if(_bs&&D.brand) _bs.innerHTML="<b>"+(D.brandShort||"")+"</b> · "+D.brand; }catch(e){}
+render(0);
+setLang(START_LANG);
+if(_shotM){ document.body.classList.add("shotmode"); stage.classList.add("shot"); render(parseInt(_shotM[1],10)); }  // 프레임 캡처용 정적 렌더
+
+</script>

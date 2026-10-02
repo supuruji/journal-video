@@ -1,0 +1,1047 @@
+{
+  "schema": "journal-issue-video/1.0",
+  "issue": {
+    "journalName": "Journal of Daesoon Thought & the Religions of East Asia",
+    "journalShort": "JDTREA",
+    "volume": "Vol. 5 · No. 2",
+    "year": "2025",
+    "site": "www.jdre.org",
+    "logoDataUri": "data:image/png;base64,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",
+    "accentPalette": [
+      "#9a5cc4",
+      "#c74da0",
+      "#28b2c4",
+      "#ef7a4e",
+      "#7a6bd6",
+      "#e6b24a"
+    ],
+    "ui": {
+      "ko": {
+        "tag": "논문 도해 영상",
+        "posterTitle": "JDTREA 논문 도해 영상",
+        "posterBtn": "재생 (소리 포함)",
+        "posterNote": "각 논문의 핵심을 도해와 음성으로 안내합니다. 소리를 켜고 감상하세요.",
+        "endtxt": "안내 영상이 끝났습니다",
+        "replay": "다시 보기",
+        "soundOn": "소리 끄기 (M)",
+        "soundOff": "소리 켜기 (M)",
+        "playing": "재생 중",
+        "paused": "일시정지"
+      },
+      "en": {
+        "tag": "Paper Mind-Map Film",
+        "posterTitle": "JDTREA Paper Mind-Maps",
+        "posterBtn": "Play (with sound)",
+        "posterNote": "Each paper is introduced with a diagram and narration. Turn your sound on.",
+        "endtxt": "End of preview",
+        "replay": "Replay",
+        "soundOn": "Mute (M)",
+        "soundOff": "Narration on (M)",
+        "playing": "Now playing",
+        "paused": "Paused"
+      }
+    },
+    "articleEyebrow": {
+      "ko": "Research Article · 논문 도해",
+      "en": "Research Article"
+    },
+    "articleName": {
+      "ko": "논문 %s · %s",
+      "en": "Article %s · %s"
+    },
+    "cover": {
+      "ko": {
+        "sub": "Journal of Daesoon Thought & the Religions of East Asia · 2025",
+        "issuebar": "연구논문 6편 · 서평 2편 · 제5권 완간호",
+        "name": "표지",
+        "lines": [
+          {
+            "t": "<b>대순사상과 동아시아 종교 학술지</b> 제5권 2호, 논문 도해 영상입니다.",
+            "d": 4200
+          },
+          {
+            "t": "여섯 편의 논문을 핵심 구조 도해와 함께 소개합니다.",
+            "d": 4400
+          }
+        ]
+      },
+      "en": {
+        "sub": "Journal of Daesoon Thought & the Religions of East Asia · 2025",
+        "issuebar": "6 Research Articles · 2 Book Reviews · Completing Volume 5",
+        "name": "Cover",
+        "lines": [
+          {
+            "t": "<b>Journal of Daesoon Thought & the Religions of East Asia</b>, Vol. 5 No. 2 — a mind-map film.",
+            "d": 4200
+          },
+          {
+            "t": "We introduce the six articles through diagrams of their core structure.",
+            "d": 4400
+          }
+        ]
+      }
+    },
+    "about": {
+      "ko": {
+        "eyebrow": "Editor's Preface · 편집장 서문",
+        "lead": "이번 호로 <span class=\"hl\">제5권이 완성</span>됩니다 — 동아시아 종교와 한국 신종교 연구의 큰 성취입니다.",
+        "attr": "— <b>Carole M. Cusack</b> · Editor-in-Chief, The University of Sydney",
+        "name": "편집장 서문",
+        "lines": [
+          {
+            "t": "편집장은 JDTREA에 대한 관심이 꾸준히 커지고 있음에 주목합니다.",
+            "d": 4300
+          },
+          {
+            "t": "이제 각 논문의 초록을 도해로 하나씩 살펴보겠습니다.",
+            "d": 4300
+          }
+        ]
+      },
+      "en": {
+        "eyebrow": "Editor's Preface",
+        "lead": "This issue <span class=\"hl\">completes the fifth volume</span> — a great achievement in the field.",
+        "attr": "— <b>Carole M. Cusack</b> · Editor-in-Chief, The University of Sydney",
+        "name": "Editor's Preface",
+        "lines": [
+          {
+            "t": "As Editor-in-Chief, Carole Cusack is excited by the growing interest in JDTREA.",
+            "d": 4300
+          },
+          {
+            "t": "Now, let us look at each paper’s abstract as a diagram.",
+            "d": 4300
+          }
+        ]
+      }
+    },
+    "counts": {
+      "ko": {
+        "eyebrow": "이번 호 구성",
+        "stats": [
+          {
+            "n": "6",
+            "l": "연구논문"
+          },
+          {
+            "n": "2",
+            "l": "서평"
+          },
+          {
+            "n": "6",
+            "l": "국가·지역"
+          }
+        ],
+        "points": "인도네시아 · 중국 · 베트남 · 폴란드 · 나이지리아 · 한국",
+        "name": "이번 호 구성",
+        "lines": [
+          {
+            "t": "여섯 편의 논문은 여러 대륙의 종교 전통을 아우릅니다.",
+            "d": 4200
+          },
+          {
+            "t": "상당수가 한국의 <b>대순진리회</b>를 비교의 축으로 삼습니다.",
+            "d": 4400
+          }
+        ]
+      },
+      "en": {
+        "eyebrow": "This Issue",
+        "stats": [
+          {
+            "n": "6",
+            "l": "Research<br>Articles"
+          },
+          {
+            "n": "2",
+            "l": "Book<br>Reviews"
+          },
+          {
+            "n": "6",
+            "l": "Countries<br>& Regions"
+          }
+        ],
+        "points": "Indonesia · China · Vietnam · Poland · Nigeria · Korea",
+        "name": "This Issue",
+        "lines": [
+          {
+            "t": "Six research articles span religious traditions across several continents.",
+            "d": 4200
+          },
+          {
+            "t": "Many draw on Korea’s <b>Daesoon Jinrihoe</b> as a point of comparison.",
+            "d": 4400
+          }
+        ]
+      }
+    },
+    "reviews": {
+      "ko": {
+        "eyebrow": "Book Reviews · 서평",
+        "items": [
+          {
+            "t": "Don Baker, <span style=\"font-style:normal\">Korean New Religions</span>",
+            "m": "서평: Carole M. CUSACK · University of Sydney · p. 147"
+          },
+          {
+            "t": "Siddhartha Deb, <span style=\"font-style:normal\">Twilight Prisoners</span>",
+            "m": "서평: Edward IRONS · HK Institute for Culture, Commerce and Religion · p. 149"
+          }
+        ],
+        "name": "서평",
+        "lines": [
+          {
+            "t": "이번 호는 서평 편집자 <b>Holly Folk</b> 교수가 마련한 서평으로 마무리됩니다.",
+            "d": 5200
+          },
+          {
+            "t": "돈 베이커의 『한국 신종교』와 싯다르타 뎁의 『황혼의 수인들』을 소개합니다.",
+            "d": 5000
+          }
+        ]
+      },
+      "en": {
+        "eyebrow": "Book Reviews",
+        "items": [
+          {
+            "t": "Don Baker, <span style=\"font-style:normal\">Korean New Religions</span>",
+            "m": "Reviewed by Carole M. CUSACK · University of Sydney · p. 147"
+          },
+          {
+            "t": "Siddhartha Deb, <span style=\"font-style:normal\">Twilight Prisoners</span>",
+            "m": "Reviewed by Edward IRONS · HK Institute for Culture, Commerce and Religion · p. 149"
+          }
+        ],
+        "name": "Book Reviews",
+        "lines": [
+          {
+            "t": "The issue is completed by reviews from Review Editor <b>Holly Folk</b>.",
+            "d": 5000
+          },
+          {
+            "t": "Don Baker’s <i>Korean New Religions</i> and Siddhartha Deb’s <i>Twilight Prisoners</i>.",
+            "d": 5000
+          }
+        ]
+      }
+    },
+    "closing": {
+      "ko": {
+        "eyebrow": "맺음말",
+        "lead": "“다섯 권의 완성은 <span class=\"hl\">큰 성취</span>이며, 앞날은 밝습니다.”",
+        "attr": "— <b>Carole M. Cusack</b>, Editor of JDTREA",
+        "thanks": "감사의 말 — <b>배규한</b> 이사장, <b>이경원</b>, <b>Jason Greenberger</b>, <b>최원혁</b> (대진대학교), 그리고 저자와 심사위원 여러분께 감사드립니다.",
+        "name": "맺음말",
+        "lines": [
+          {
+            "t": "편집장은 JDTREA와 함께하는 여정이 큰 기쁨이라고 전합니다.",
+            "d": 4400
+          },
+          {
+            "t": "읽어주셔서 감사합니다. 다음 호에서 다시 만나요.",
+            "d": 4600
+          }
+        ]
+      },
+      "en": {
+        "eyebrow": "Closing",
+        "lead": "“Five volumes is a <span class=\"hl\">great achievement</span>, and the future is looking bright.”",
+        "attr": "— <b>Carole M. Cusack</b>, Editor of JDTREA",
+        "thanks": "With gratitude to Chairman <b>Bae Kyuhan</b>, <b>Lee Gyungwon</b>, <b>Jason Greenberger</b>, and <b>Choi Wonhyuk</b> of Daejin University, and to the authors and referees.",
+        "name": "Closing",
+        "lines": [
+          {
+            "t": "It is a delight to continue this involvement with the journal.",
+            "d": 4400
+          },
+          {
+            "t": "Thank you for watching — see you in the next issue.",
+            "d": 4600
+          }
+        ]
+      }
+    }
+  },
+  "papers": [
+    {
+      "num": "01",
+      "accent": 3,
+      "page": "p. 13",
+      "titleEn": "Chinese-Attributed Religions in Indonesia",
+      "author": "SHEN Yeh-Ying",
+      "aff": "Singapore Univ. of Social Sciences",
+      "short": {
+        "ko": "Shen · 인도네시아 종교",
+        "en": "Chinese-Attributed Religions in Indonesia"
+      },
+      "abstract": "Indonesia has experienced two major anti-Chinese crises that profoundly reshaped Chinese cultural and religious life, most notably during the New Order period (1966–1998), when Chinese language and public cultural expressions were severely restricted. Under these conditions, Chinese-attributed religions were compelled to adapt in order to persist within Indonesia’s political and social framework. This article examines how three such religious movements—MATAKIN (Confucianism), Mile Dadao (Chinese Sectarian Religion), and Yiguandao (Chinese Sectarian Religion)—negotiated processes of localization under shifting state policies. MATAKIN, founded by locally born Chinese Indonesians, institutionalized Confucianism as a monotheistic religion aligned with national ideological requirements. Mile Dadao, introduced from Taiwan, had already undergone substantial localization through the exclusive use of Indonesian and strong institutional embedding. By contrast, Yiguandao adopted a strategy of selective localization, balancing Indonesian public engagement with the internal preservation of Chinese language and ritual. Through comparison, this study highlights the diverse adaptive pathways through which Chinese-attributed religions secured legitimacy and continuity in Indonesia.",
+      "keywords": [
+        "MATAKIN",
+        "Mile Dadao",
+        "Yiguandao",
+        "Chinese Indonesian",
+        "Chinese religions in Indonesia"
+      ],
+      "summaryKo": "인도네시아는 신질서 시대(1966–1998)를 포함해 두 차례의 큰 반중(反中) 위기를 거치며 중국계 문화·종교가 크게 위축되었다. 이 글은 그러한 압력 속에서 MATAKIN(유교)·미릍대도·이관도 세 종교가 어떻게 '현지화'의 길을 걸었는지 비교한다. 현지에서 태어난 중국계가 세운 MATAKIN은 유교를 국가 이념에 맞는 유일신 종교로 제도화했고, 대만에서 전래된 미릍대도는 인도네시아어 사용과 강한 제도화로 이미 깊이 현지화되었다. 반면 이관도는 대외적으로는 인도네시아어로 소통하되 내부적으로는 중국어와 의례를 보존하는 '선택적 현지화' 전략을 택했다. 저자는 이처럼 다양한 적응 경로가 중국계 종교의 정당성과 존속을 가능하게 했음을 보여준다.",
+      "ednoteKo": "JDTREA가 처음 다루는 인도네시아 종교 연구로, 이관도에 관한 기존 연구와도 잘 맞닿는다.” — 편집장 Carole M. Cusack",
+      "mindmap": {
+        "ko": {
+          "root": "인도네시아 중국계 종교의 현지화",
+          "branches": [
+            {
+              "t": "배경",
+              "l": [
+                "두 차례의 반중(反中) 위기",
+                "신질서 시대 1966–1998",
+                "중국어·공개 문화 표현 제한"
+              ]
+            },
+            {
+              "t": "MATAKIN · 유교",
+              "l": [
+                "현지 태생 화인이 설립",
+                "유교를 유일신 종교로 제도화",
+                "국가 이념에 부합"
+              ]
+            },
+            {
+              "t": "미륵대도",
+              "l": [
+                "대만에서 전래",
+                "인도네시아어 전용",
+                "강한 제도적 정착 → 깊은 현지화"
+              ]
+            },
+            {
+              "t": "이관도",
+              "l": [
+                "선택적 현지화 전략",
+                "대외: 인도네시아어 소통",
+                "내부: 중국어·의례 보존"
+              ]
+            },
+            {
+              "t": "결론",
+              "l": [
+                "다양한 적응 경로",
+                "정당성과 존속 확보"
+              ]
+            }
+          ]
+        },
+        "en": {
+          "root": "Localization of Chinese Religions in Indonesia",
+          "branches": [
+            {
+              "t": "Context",
+              "l": [
+                "Two anti-Chinese crises",
+                "New Order era 1966–1998",
+                "Chinese language & culture restricted"
+              ]
+            },
+            {
+              "t": "MATAKIN · Confucianism",
+              "l": [
+                "Founded by local-born Chinese",
+                "Confucianism as a monotheistic religion",
+                "Aligned with state ideology"
+              ]
+            },
+            {
+              "t": "Mile Dadao",
+              "l": [
+                "Introduced from Taiwan",
+                "Exclusive use of Indonesian",
+                "Strong embedding → deep localization"
+              ]
+            },
+            {
+              "t": "Yiguandao",
+              "l": [
+                "Selective localization",
+                "Public: Indonesian engagement",
+                "Internal: Chinese language & ritual kept"
+              ]
+            },
+            {
+              "t": "Conclusion",
+              "l": [
+                "Diverse adaptive pathways",
+                "Legitimacy & continuity secured"
+              ]
+            }
+          ]
+        }
+      },
+      "narration": {
+        "ko": [
+          {
+            "t": "JDTREA가 처음 다루는 <b>인도네시아 종교</b> 연구입니다.",
+            "d": 4200
+          },
+          {
+            "t": "네덜란드 식민 지배 이후의 맥락 속 중국계 신종교를 조명합니다.",
+            "d": 4600
+          },
+          {
+            "t": "이관도와 미륵대도는 대만에서 전래되었고, MATAKIN은 현지에서 티안을 유일신, 공자를 예언자로 삼아 발전했습니다.",
+            "d": 5600
+          },
+          {
+            "t": "이슬람교와 기독교의 제도적 모델이 MATAKIN의 형태에 깊은 영향을 주었습니다.",
+            "d": 4800
+          }
+        ],
+        "en": [
+          {
+            "t": "The first study of religion in <b>Indonesia</b> that JDTREA has published.",
+            "d": 4200
+          },
+          {
+            "t": "It sets out the context after Dutch colonial dominance, focusing on Chinese Indonesian new religions.",
+            "d": 5000
+          },
+          {
+            "t": "Yiguandao and Mile Dadao came from Taiwan; MATAKIN developed locally, with Heaven as sole god and Confucius as prophet.",
+            "d": 5600
+          },
+          {
+            "t": "The models of Islam and Christianity profoundly influenced MATAKIN’s institutional form.",
+            "d": 4800
+          }
+        ]
+      }
+    },
+    {
+      "num": "02",
+      "accent": 2,
+      "page": "p. 31",
+      "titleEn": "Beyond Utilitarian Compassion: Daoist Animal Release",
+      "author": "LI Xiaolong & SU Qianwen",
+      "aff": "Henan Normal University",
+      "short": {
+        "ko": "Li & Su · 도교 방생",
+        "en": "Beyond Utilitarian Compassion: Daoist Animal Release"
+      },
+      "abstract": "This article examines the Daoist practice of animal release (fangsheng 放生) as a cultural phenomenon, aiming to explore how it embodies the characteristics of diverse integration and harmony in diversity within Daoist culture, while also uncovering its contemporary relevance. Methodologically, the analysis unfolds across three dimensions of Daoist animal release: ideological, ritual, and ethical. Ideologically, it integrates the Confucian concept of benevolence, the Daoist idea of equalizing all things, and the Buddhist notion of reincarnation. Ritually, it incorporates Buddhist ceremonial norms while preserving distinct Daoist features. Ethically, it critiques pre-arranged animal release (預補放生) and proposes a harmonizing approach of spontaneous release according to circumstances (隨緣放生). The authors argue that Daoist animal release not only serves as an example of the creative integration of the three teachings (Confucianism 儒, Daoism 道, and Buddhism 佛) but also offers significant insights for the modern era: its ecological perspective of no distinction between species (類無貴賤) provides resources for ecological ethics; its shift from utilitarian release to spiritual cultivation promotes inner transformation; and its model of harmonious coexistence among diverse cultures offers a historical paradigm for mutual learning among contemporary civilizations.",
+      "keywords": [
+        "Daoism",
+        "Animal Release",
+        "Three Teachings",
+        "diverse integration",
+        "Ecological ethics"
+      ],
+      "summaryKo": "이 글은 도교의 방생(放生) 의례를 사상·의례·윤리 세 차원에서 분석한다. 사상적으로는 유교의 인(仁), 도교의 제물(齊物), 불교의 윤회가 어우러지고, 의례적으로는 불교 의식을 받아들이면서도 도교 고유의 특징을 지킨다. 윤리적으로는 미리 사서 푸는 '예보방생'을 비판하고 상황에 따라 자연스럽게 푸는 '수연방생'을 제안한다. 저자들은 방생이 유·도·불 삼교(三教)의 창조적 융합이자, '류무귀천(類無貴賤)'의 생태적 관점을 통해 오늘날 생태 윤리와 문명 간 상호학습의 모범이 된다고 본다.",
+      "ednoteKo": "도교·유교·불교 세 전통이 결합해 현대의 동물권과 생태적 가치의 토대를 이룬다.” — 편집장 Carole M. Cusack",
+      "mindmap": {
+        "ko": {
+          "root": "도교의 방생 (放生)",
+          "branches": [
+            {
+              "t": "사상적 차원",
+              "l": [
+                "유교의 인(仁)",
+                "도교의 제물(齊物)",
+                "불교의 윤회"
+              ]
+            },
+            {
+              "t": "의례적 차원",
+              "l": [
+                "불교 의식 규범 수용",
+                "도교 고유 특징 유지"
+              ]
+            },
+            {
+              "t": "윤리적 차원",
+              "l": [
+                "예보방생(預補放生) 비판",
+                "수연방생(隨緣放生) 제안"
+              ]
+            },
+            {
+              "t": "현대적 의의",
+              "l": [
+                "생태 윤리: 류무귀천(類無貴賤)",
+                "공리적 방생 → 영적 수양",
+                "문명 간 상호학습"
+              ]
+            }
+          ]
+        },
+        "en": {
+          "root": "Daoist Animal Release (放生)",
+          "branches": [
+            {
+              "t": "Ideological",
+              "l": [
+                "Confucian benevolence (仁)",
+                "Daoist equalizing (齊物)",
+                "Buddhist reincarnation"
+              ]
+            },
+            {
+              "t": "Ritual",
+              "l": [
+                "Adopts Buddhist ceremony",
+                "Keeps distinct Daoist features"
+              ]
+            },
+            {
+              "t": "Ethical",
+              "l": [
+                "Critiques pre-arranged release (預補放生)",
+                "Proposes spontaneous release (隨緣放生)"
+              ]
+            },
+            {
+              "t": "Significance",
+              "l": [
+                "Ecology: no species hierarchy (類無貴賤)",
+                "Utilitarian → spiritual cultivation",
+                "Mutual learning of civilizations"
+              ]
+            }
+          ]
+        }
+      },
+      "narration": {
+        "ko": [
+          {
+            "t": "도살될 동물을 풀어주어 신의 보호와 축복을 구하는 <b>방생(放生)</b> 의례입니다.",
+            "d": 5000
+          },
+          {
+            "t": "자연을 아끼는 도교, 생명을 귀히 여기는 유교, 살생을 금하는 불교가 하나로 묶입니다.",
+            "d": 5400
+          },
+          {
+            "t": "이 결합은 오늘날 동물권과 생태적 가치의 토대가 됩니다.",
+            "d": 4200
+          }
+        ],
+        "en": [
+          {
+            "t": "The release of animals destined for slaughter, to receive divine protection and blessings.",
+            "d": 5000
+          },
+          {
+            "t": "It unites Daoist respect for nature, Confucian valuing of all life, and Buddhist prohibitions on killing.",
+            "d": 5400
+          },
+          {
+            "t": "Combined, the three traditions form a basis for animal rights and ecological values today.",
+            "d": 4200
+          }
+        ]
+      }
+    },
+    {
+      "num": "03",
+      "accent": 0,
+      "page": "p. 55",
+      "titleEn": "Fusion of Maitreya and Messiah Symbols",
+      "author": "DINH Hong Hai",
+      "aff": "Vietnam National Univ., Hanoi",
+      "short": {
+        "ko": "Dinh · 미륵과 메시아",
+        "en": "Fusion of Maitreya and Messiah Symbols"
+      },
+      "abstract": "The research explores the significant cultural and religious exchanges between Western and East Asian cultures initiated by Jesuit missionaries from the 16th century onward. By employing a strategy of cultural integration, the Jesuits harmonized Christian teachings with Confucian ideals, appealing to East Asian intellectuals. They used Christian messianic symbols and the figure of Jesus Christ to connect with East Asian religious symbols such as Maitreya, the Buddhist Savior, and Shangdi, the Supreme God in Chinese tradition. This integration combined Christian monotheistic ideas with traditional East Asian beliefs. To illustrate this point, the research examines the evolution of messianic symbols in two major East Asian religious movements: Daesoon Jinrihoe in Korea and Caodaism in Vietnam. Both religions merged the symbols of Maitreya and the Messiah to create the concept of a universal savior, represented as Jeungsan in Daesoon Jinrihoe and Cao Đài Tiên Ông in Caodaism.",
+      "keywords": [
+        "Fusion",
+        "Maitreya",
+        "Messiah",
+        "Daesoon Jinrihoe",
+        "Caodaism",
+        "New Religious Movements (NRMs)"
+      ],
+      "summaryKo": "16세기 이후 예수회 선교사들은 '문화 통합' 전략으로 기독교 교리를 유교적 이상과 조화시키며 동아시아 지식인에게 다가갔다. 이들은 예수 그리스도와 메시아 상징을 불교의 미릍, 중국의 상제(上帝) 같은 동아시아 상징과 연결했다. 이 글은 그 결과 등장한 두 신종교—한국의 대순진리회와 베트남의 까오다이교—에서 미릍과 메시아가 융합되는 과정을 살핌다. 두 종교는 각각 증산(甑山)과 까오다이 띄엔 옷으로 표상되는 '보편적 구세주' 개념을 만들어냈다.",
+      "ednoteKo": "미릍과 기독교 메시아의 연결이 20세기 신종교에 큰 영향을 주었음을 보여준다.” — 편집장 Carole M. Cusack",
+      "mindmap": {
+        "ko": {
+          "root": "미륵 + 메시아 융합",
+          "branches": [
+            {
+              "t": "16세기 예수회",
+              "l": [
+                "‘문화 통합’ 전략",
+                "기독교 교리 ↔ 유교 이상",
+                "동아시아 지식인 공략"
+              ]
+            },
+            {
+              "t": "상징의 연결",
+              "l": [
+                "예수 그리스도·메시아",
+                "불교의 미륵",
+                "중국의 상제(上帝)"
+              ]
+            },
+            {
+              "t": "대순진리회 · 한국",
+              "l": [
+                "보편적 구세주",
+                "증산(甑山)으로 표상"
+              ]
+            },
+            {
+              "t": "까오다이교 · 베트남",
+              "l": [
+                "보편적 구세주",
+                "까오다이 띠엔 옹"
+              ]
+            }
+          ]
+        },
+        "en": {
+          "root": "Fusion of Maitreya + Messiah",
+          "branches": [
+            {
+              "t": "16th-c. Jesuits",
+              "l": [
+                "“Cultural integration” strategy",
+                "Christian teaching ↔ Confucian ideals",
+                "Appealed to East Asian elites"
+              ]
+            },
+            {
+              "t": "Linking symbols",
+              "l": [
+                "Jesus Christ / Messiah",
+                "Buddhist Maitreya",
+                "Chinese Shangdi (上帝)"
+              ]
+            },
+            {
+              "t": "Daesoon Jinrihoe · Korea",
+              "l": [
+                "Universal savior",
+                "Embodied as Jeungsan (甑山)"
+              ]
+            },
+            {
+              "t": "Caodaism · Vietnam",
+              "l": [
+                "Universal savior",
+                "Cao Đài Tiên Ông"
+              ]
+            }
+          ]
+        }
+      },
+      "narration": {
+        "ko": [
+          {
+            "t": "16세기 이후 예수회 선교사와 동아시아 문화의 만남은 구세주 상징에 대한 수용성을 낳았습니다.",
+            "d": 5200
+          },
+          {
+            "t": "미륵과 기독교 메시아의 연결이 두 신종교에 영향을 주었습니다.",
+            "d": 4400
+          },
+          {
+            "t": "<b>대순진리회</b>는 증산, 까오다이교는 까오다이 띠엔 옹으로 보편적 구세주를 표상합니다.",
+            "d": 5400
+          }
+        ],
+        "en": [
+          {
+            "t": "From the sixteenth century, Jesuit missionaries created a receptivity to saviour symbols.",
+            "d": 5000
+          },
+          {
+            "t": "Links between Maitreya and the Christian Messiah shaped two new religions.",
+            "d": 4400
+          },
+          {
+            "t": "A universal savior — Jeungsan in <b>Daesoon Jinrihoe</b>, Cao Đài Tiên Ông in Caodaism.",
+            "d": 5200
+          }
+        ]
+      }
+    },
+    {
+      "num": "04",
+      "accent": 4,
+      "page": "p. 85",
+      "titleEn": "The Rationality of Myth (Malinowski)",
+      "author": "Dominik RUTANA",
+      "aff": "SWPS University, Poland",
+      "short": {
+        "ko": "Rutana · 신화의 합리성",
+        "en": "The Rationality of Myth (Malinowski)"
+      },
+      "abstract": "While Western modernity saw the displacement of a myth-based worldview by reason, Asian cultures followed a different trajectory. There, myth retained the ethical and spiritual dimensions acquired during the Axial Age (800–200 BCE), continuing to serve as a foundational social force. The enduring power of this mythos is evident in the emergence of new religious movements (NRMs) in 19th and 20th century Korea and, moreover, it remains significant today, offering a necessary counterweight in a pragmatic world where logos alone is often insufficient and where the need for compassion is renewed. This study analyzes the mythology of Daesoon Jinrihoe’s The Canonical Scripture (Jeon-gyeong 典經) through the lens of Bronisław Malinowski’s functional theory of myth, demonstrating how it shapes lifestyles, reinforces beliefs, justifies rituals, and codifies social norms.",
+      "keywords": [
+        "myth",
+        "functional theory of myth",
+        "Daesoon Jinrihoe’s mythology",
+        "haewon sangsaeng",
+        "chiseong",
+        "ethics",
+        "ritual practice"
+      ],
+      "summaryKo": "서구 근대가 이성(logos)으로 신화적 세계관을 대체한 것과 달리, 아시아 문화에서는 신화(mythos)가 축의 시대(기원전 800–200년)에 얻은 윤리적·영적 차원을 간직한 채 사회를 떷받치는 힘으로 남았다. 이 글은 대순진리회의 『전경(典經)』 신화를 말리노프스키의 기능주의 신화 이론으로 분석한다. 그 신화가 어떻게 생활양식을 빚고, 믿음을 강화하며, 의례를 정당화하고, 사회 규범을 성문화하는지를 보여준다. 나아가 이성만으로는 충분치 않은 실용적 세계에서 신화가 여전히 필요한 균형추임을 역설한다.",
+      "ednoteKo": "상제께서 몸소 행하신 수행이 종교적 탁월함의 모범으로 제시된다.” — 편집장 Carole M. Cusack",
+      "mindmap": {
+        "ko": {
+          "root": "신화의 합리성",
+          "branches": [
+            {
+              "t": "서구 vs 아시아",
+              "l": [
+                "서구: 이성(logos)이 신화 대체",
+                "아시아: 신화(mythos) 존속"
+              ]
+            },
+            {
+              "t": "축의 시대 BCE 800–200",
+              "l": [
+                "윤리적·영적 차원 획득",
+                "사회의 토대적 힘"
+              ]
+            },
+            {
+              "t": "분석 대상",
+              "l": [
+                "대순진리회 『전경(典經)』",
+                "말리노프스키 기능주의 신화론"
+              ]
+            },
+            {
+              "t": "신화의 기능",
+              "l": [
+                "생활양식 형성",
+                "믿음 강화",
+                "의례 정당화",
+                "사회 규범 성문화"
+              ]
+            }
+          ]
+        },
+        "en": {
+          "root": "The Rationality of Myth",
+          "branches": [
+            {
+              "t": "West vs Asia",
+              "l": [
+                "West: logos displaces myth",
+                "Asia: mythos endures"
+              ]
+            },
+            {
+              "t": "Axial Age 800–200 BCE",
+              "l": [
+                "Gains ethical & spiritual depth",
+                "A foundational social force"
+              ]
+            },
+            {
+              "t": "Object of analysis",
+              "l": [
+                "Daesoon Jinrihoe’s Canonical Scripture (典經)",
+                "Malinowski’s functional theory of myth"
+              ]
+            },
+            {
+              "t": "Functions of myth",
+              "l": [
+                "Shapes lifestyles",
+                "Reinforces beliefs",
+                "Justifies rituals",
+                "Codifies social norms"
+              ]
+            }
+          ]
+        }
+      },
+      "narration": {
+        "ko": [
+          {
+            "t": "신화(mythos)와 이성(logos)을 서로 다른 사유 양식으로 봅니다.",
+            "d": 4600
+          },
+          {
+            "t": "말리노프스키의 기능주의 신화론으로 『전경』의 신화를 분석합니다.",
+            "d": 4600
+          },
+          {
+            "t": "신화가 생활양식을 빚고 믿음을 강화하며 의례를 정당화하고 규범을 성문화함을 보여줍니다.",
+            "d": 5600
+          }
+        ],
+        "en": [
+          {
+            "t": "Rutana treats mythos and logos as different modes of thinking.",
+            "d": 4400
+          },
+          {
+            "t": "The Canonical Scripture is analysed through Malinowski’s functional theory of myth.",
+            "d": 4600
+          },
+          {
+            "t": "Myth shapes lifestyles, reinforces beliefs, justifies rituals, and codifies social norms.",
+            "d": 5400
+          }
+        ]
+      }
+    },
+    {
+      "num": "05",
+      "accent": 5,
+      "page": "p. 103",
+      "titleEn": "Language and Identity Construction",
+      "author": "Ibukunolu Isaac OLODUDE",
+      "aff": "Obafemi Awolowo Univ., Nigeria",
+      "short": {
+        "ko": "Olodude · 언어와 정체성",
+        "en": "Language and Identity Construction"
+      },
+      "abstract": "Language plays a crucial role in constructing institutional and collective identities and it is central to the negotiation of identity especially in religious communities. Nigeria has a massive presence of several mega Pentecostal churches dotting the landscape of both rural and urban cities. Additionally, in Asia, Korea has had quite a number of new religious movements out of which the Daesoon Jinrihoe movement, so named in 1969, has emerged as the prominent NRM. In Nigerian Pentecostal Christianity, leaders of churches use distinctive linguistic expressions and statements that function as identity markers, shaping not only how congregations perceive themselves but also how outsiders recognize each denomination. This paper examines the linguistic construction of identity in selected Pentecostal churches with large membership in Nigeria and the Korean Daesoon Jinrihoe religious movement. Using Bucholtz and Hall’s (2005) sociocultural linguistic framework, it highlights the idiolects and sociolects associated with the leaders of the religious groups, judging from popular statements often said by them and quotes from their teachings available on their websites. The study adopts a linguistic ethnographic methodology, particularly participant and non-participant observation, to harvest the lexicons and statements that have constructed an identity for the selected churches. It also conducts unstructured interviews with some leaders and members of the religious groups to generate critical data about spiritual leadership and how the leaders’ statements shape the negotiation of identities within its membership. It concludes that these linguistic identities are emergent, interactional, and intersubjective, reinforcing each religious movement’s theological orientation and communal ethos.",
+      "keywords": [
+        "Identity construction",
+        "linguistic identity",
+        "Nigerian Pentecostal Christianity",
+        "Daesoon Jinrihoe movement",
+        "idiolect and sociolects",
+        "identity markers"
+      ],
+      "summaryKo": "언어는 제도적·집단적 정체성을 구성하는 핵심이며, 특히 종교 공동체의 정체성 형성에서 중요하다. 이 글은 대형 교세를 가진 나이지리아 오순절 교회들과 한국의 대순진리회(1969년 명명)를 대상으로, 지도자들의 독특한 언어 표현이 어떻게 '정체성 표지'로 기능하는지 분석한다. 부홀츠와 홀(2005)의 사회문화 언어학 틀과 언어 민족지 방법(참여·비참여 관찰, 비구조화 면접)을 활용한다. 결론적으로 이러한 언어적 정체성은 발현적·상호작용적·상호주관적으로, 각 종교의 신학적 지향과 공동체적 기풍을 강화한다.",
+      "ednoteKo": "전혀 다른 두 전통을 '언어·정체성'의 넓은 틀로 연결해 새 통찰을 얻는다.” — 편집장 Carole M. Cusack",
+      "mindmap": {
+        "ko": {
+          "root": "언어와 정체성 구성",
+          "branches": [
+            {
+              "t": "대상",
+              "l": [
+                "나이지리아 대형 오순절 교회",
+                "한국 대순진리회 (1969 명명)"
+              ]
+            },
+            {
+              "t": "핵심 주장",
+              "l": [
+                "지도자의 독특한 언어 표현",
+                "= 정체성 표지(marker)",
+                "내·외부 인식을 형성"
+              ]
+            },
+            {
+              "t": "이론 · 방법",
+              "l": [
+                "부홀츠·홀(2005) 틀",
+                "언어 민족지",
+                "관찰·면접"
+              ]
+            },
+            {
+              "t": "결론",
+              "l": [
+                "발현적",
+                "상호작용적",
+                "상호주관적"
+              ]
+            }
+          ]
+        },
+        "en": {
+          "root": "Language & Identity Construction",
+          "branches": [
+            {
+              "t": "Cases",
+              "l": [
+                "Large Nigerian Pentecostal churches",
+                "Korean Daesoon Jinrihoe (named 1969)"
+              ]
+            },
+            {
+              "t": "Core claim",
+              "l": [
+                "Leaders’ distinctive expressions",
+                "= identity markers",
+                "Shape insider & outsider views"
+              ]
+            },
+            {
+              "t": "Theory · Method",
+              "l": [
+                "Bucholtz & Hall (2005)",
+                "Linguistic ethnography",
+                "Observation & interviews"
+              ]
+            },
+            {
+              "t": "Conclusion",
+              "l": [
+                "Emergent",
+                "Interactional",
+                "Intersubjective"
+              ]
+            }
+          ]
+        }
+      },
+      "narration": {
+        "ko": [
+          {
+            "t": "전혀 다른 두 전통 — 나이지리아 오순절교와 <b>대순진리회</b>를 나란히 놓습니다.",
+            "d": 5000
+          },
+          {
+            "t": "지도자의 독특한 언어 표현이 '정체성 표지'로 기능합니다.",
+            "d": 4600
+          },
+          {
+            "t": "이러한 언어적 정체성은 발현적이고 상호작용적이며 상호주관적입니다.",
+            "d": 4800
+          }
+        ],
+        "en": [
+          {
+            "t": "Two radically different traditions — Nigerian Pentecostalism and <b>Daesoon Jinrihoe</b>.",
+            "d": 4800
+          },
+          {
+            "t": "Leaders’ distinctive expressions function as identity markers.",
+            "d": 4400
+          },
+          {
+            "t": "These linguistic identities are emergent, interactional, and intersubjective.",
+            "d": 4800
+          }
+        ]
+      }
+    },
+    {
+      "num": "06",
+      "accent": 1,
+      "page": "p. 127",
+      "titleEn": "Invented Traditions & Collective Memory",
+      "author": "TRINH Ngoc Linh",
+      "aff": "Vietnam National Univ., Ho Chi Minh",
+      "short": {
+        "ko": "Trinh · 만들어진 전통",
+        "en": "Invented Traditions & Collective Memory"
+      },
+      "abstract": "Invented tradition is a concept in the fields of cultural studies, anthropology, sociology, and history, and in the case of the new religious movement in Vietnam, it is all the more evident in emphasizing the connection to the past in the context of the diminishing dominance of Sino-Vietnamese civilization amid the growing and expanding influence of the West into China and its surrounding countries in the late 19th and early 20th centuries. This study employs the post-structural perspective of cultural studies and applies Eric Hobsbawm’s theory of invented traditions and Maurice Halbwachs’s idea of collective memory to demonstrate that the emergence of the new religious movement is an indirect result of a series of cultural negotiations among migrant groups to Southern Vietnam. The ultimate result is the syncretism of religions. The trauma in the historical memory of the old homeland, combined with contemporary political trauma and the trauma in religious practices, led to the rise of the new religion in Vietnam. The new religious movement in Vietnam is a direct product of cultural negotiations among different resident groups to create a shared collective cultural memory, represented by the three ethnic groups: Vietnamese, Chinese, and Khmer. This study begins by introducing the two concepts of invented traditions and collective memory, as well as their relationship within the historical, cultural, and regional context of Southern Vietnam. It then discusses several previous studies with the common theme of syncretism and multiculturalism in Southern Vietnam. In the last two sections, the long history of cohabitation and the balanced position in memory negotiation among different resident groups will be shown. Theoretically, this study adds a new approach to research on new religions in Vietnam. Practically, it provides an overview of the political and cultural capacity of migrant groups.",
+      "keywords": [
+        "New religious movement",
+        "Southern Vietnam",
+        "Cochinchina",
+        "Immigrants to Vietnam",
+        "Southwards process"
+      ],
+      "summaryKo": "'만들어진 전통'은 문화연구·인류학·사회학·역사학의 개념으로, 베트남 신종교의 경우 19세기 말–20세기 초 서구의 영향이 커지고 한자문명권의 지배력이 약해지는 가운데 과거와의 연결을 강조하는 양상에서 뚜렷하다. 이 글은 홉스봐의 '만들어진 전통'과 알박스의 '집단 기억' 이론을 적용해, 남부 베트남으로 이주한 집단들 간의 문화적 협상이 신종교의 등장과 종교 혼합(syncretism)으로 이어졌음을 논증한다. 옵 고향에 대한 기억의 트라우마, 당대의 정치적 트라우마, 종교 실천의 트라우마가 결합해 신종교가 일어났으며, 베트남인·중국인·크메르인 세 집단이 공유된 문화 기억을 만들어낸 직접적 산물이다.",
+      "ednoteKo": "메콩 델타의 풍경과 민족적 다양성이 남부 베트남의 혼합적 종교 문화를 꽃피웠다.” — 편집장 Carole M. Cusack",
+      "mindmap": {
+        "ko": {
+          "root": "만들어진 전통 · 집단 기억",
+          "branches": [
+            {
+              "t": "배경 (19c말–20c초)",
+              "l": [
+                "서구 영향 확대",
+                "한자문명권 쇠퇴",
+                "과거와의 연결 강조"
+              ]
+            },
+            {
+              "t": "이론 틀",
+              "l": [
+                "홉스봄: 만들어진 전통",
+                "알박스: 집단 기억"
+              ]
+            },
+            {
+              "t": "메커니즘",
+              "l": [
+                "이주 집단 간 문화적 협상",
+                "베트남인·중국인·크메르인",
+                "공유된 문화 기억"
+              ]
+            },
+            {
+              "t": "트라우마 → 신종교",
+              "l": [
+                "고향 기억의 트라우마",
+                "정치적 트라우마",
+                "종교 실천의 트라우마",
+                "→ 종교 혼합"
+              ]
+            }
+          ]
+        },
+        "en": {
+          "root": "Invented Traditions · Collective Memory",
+          "branches": [
+            {
+              "t": "Context (late 19c–early 20c)",
+              "l": [
+                "Rising Western influence",
+                "Declining Sino-Vietnamese order",
+                "Emphasis on the past"
+              ]
+            },
+            {
+              "t": "Frameworks",
+              "l": [
+                "Hobsbawm: invented traditions",
+                "Halbwachs: collective memory"
+              ]
+            },
+            {
+              "t": "Mechanism",
+              "l": [
+                "Negotiation among migrants",
+                "Vietnamese · Chinese · Khmer",
+                "Shared cultural memory"
+              ]
+            },
+            {
+              "t": "Trauma → new religion",
+              "l": [
+                "Homeland-memory trauma",
+                "Political trauma",
+                "Religious-practice trauma",
+                "→ syncretism"
+              ]
+            }
+          ]
+        }
+      },
+      "narration": {
+        "ko": [
+          {
+            "t": "홉스봄의 '만들어진 전통'과 알박스의 '집단 기억' 이론을 적용합니다.",
+            "d": 4800
+          },
+          {
+            "t": "남부 베트남 이주 집단 간의 문화적 협상이 신종교와 종교 혼합으로 이어졌습니다.",
+            "d": 5200
+          },
+          {
+            "t": "베트남인·중국인·크메르인이 공유된 문화 기억을 만들어낸 산물입니다.",
+            "d": 5000
+          }
+        ],
+        "en": [
+          {
+            "t": "Applying Hobsbawm’s invented traditions and Halbwachs’s collective memory.",
+            "d": 4600
+          },
+          {
+            "t": "Cultural negotiation among Southern Vietnam’s migrants led to new religion and syncretism.",
+            "d": 5200
+          },
+          {
+            "t": "A shared cultural memory made by Vietnamese, Chinese, and Khmer groups.",
+            "d": 5000
+          }
+        ]
+      }
+    }
+  ]
+}

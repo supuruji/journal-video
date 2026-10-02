@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>__TITLE__</title>
+<meta name="description" content="JDTREA Vol 5.2 paper summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: a scholarly reading page on a dark ground; sticky brand bar, a hero,
+   a read-aloud control card, then abstract / Korean summary / keywords.
+   Single deliberately-dark theme, matching the JDTREA trailer. */
+:root{
+  --bg:#070a14; --surface:#0f1424; --surface2:#141a30; --fg:#eef0f7;
+  --muted:#99a0bd; --faint:#5a6187; --line:#232a44;
+  --a1:__A1__; --a2:__A2__;
+  --accent:var(--a1); --teal:#28b2c4;
+  --grad:linear-gradient(100deg,var(--a1),var(--a2));
+  --font-en:'Fraunces','Noto Serif KR',Georgia,serif;
+  --font-kr:'Noto Sans KR','Noto Sans',system-ui,sans-serif;
+  --font-serif-kr:'Noto Serif KR','Noto Sans KR',serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{height:auto}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-kr);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%}
+
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:13px clamp(16px,5vw,40px);background:rgba(7,10,20,.82);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar img{height:19px;display:block}
+.topbar .vol{font-family:var(--font-en);font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+.topbar .vol b{color:var(--fg);font-weight:600}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 clamp(16px,5vw,40px);padding-block:clamp(30px,6vw,56px)}
+
+.hero{position:relative;margin-bottom:34px}
+.hero .bar{width:64px;height:4px;border-radius:4px;background:var(--grad);margin-bottom:22px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:18px}
+.eyebrow .num{font-family:var(--font-en);font-weight:600;color:var(--fg);
+  background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:6px;padding:3px 10px;letter-spacing:.06em}
+.title-en{font-family:var(--font-en);font-weight:500;line-height:1.14;letter-spacing:-.01em;
+  text-wrap:balance;margin:0 0 18px;font-size:clamp(25px,4.4vw,40px)}
+.byline{font-size:clamp(14px,1.8vw,16px);color:var(--fg);font-weight:500}
+.byline .aff{display:block;color:var(--muted);font-weight:400;font-size:13.5px;margin-top:3px}
+.pagechip{display:inline-block;margin-top:14px;font-family:var(--font-en);font-size:12.5px;
+  color:var(--muted);letter-spacing:.05em;border:1px solid var(--line);border-radius:999px;padding:4px 13px}
+
+/* read-aloud card */
+.reader{background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:16px 18px;margin:30px 0 34px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 54px);z-index:15}
+.reader .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pbtn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-kr);font-size:14px;font-weight:500;
+  color:#08101a;background:var(--grad);border:0;border-radius:999px;padding:11px 20px;cursor:pointer;transition:transform .15s,filter .2s}
+.pbtn:hover{filter:brightness(1.08)}
+.pbtn:active{transform:scale(.97)}
+.pbtn svg{width:17px;height:17px;fill:currentColor}
+.sbtn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--fg);cursor:pointer;transition:background .2s}
+.sbtn:hover{background:rgba(255,255,255,.12)}
+.sbtn svg{width:17px;height:17px;fill:currentColor}
+.btn:focus-visible,.pbtn:focus-visible,.sbtn:focus-visible,.langseg button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.langseg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:auto}
+.langseg button{appearance:none;background:transparent;border:0;color:var(--muted);font-family:var(--font-kr);
+  font-size:12.5px;font-weight:500;padding:9px 15px;cursor:pointer;letter-spacing:.02em}
+.langseg button.on{background:rgba(255,255,255,.1);color:var(--fg)}
+.status{font-size:12px;color:var(--faint);margin-top:11px;display:flex;align-items:center;gap:8px}
+.status .live{width:7px;height:7px;border-radius:50%;background:var(--faint);flex:none}
+.status.reading .live{background:var(--teal);box-shadow:0 0 0 0 var(--teal);animation:pulse 1.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(40,178,196,.5)}70%{box-shadow:0 0 0 7px rgba(40,178,196,0)}100%{box-shadow:0 0 0 0 rgba(40,178,196,0)}}
+
+.sectionlabel{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:34px 0 14px;display:flex;align-items:center;gap:10px}
+.sectionlabel::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.body-en{font-family:var(--font-en);font-size:clamp(16px,2vw,18.5px);line-height:1.72;color:#e3e6f2;letter-spacing:.002em}
+.body-kr{font-family:var(--font-serif-kr);font-weight:300;font-size:clamp(15.5px,2vw,18px);line-height:1.85;color:#e3e6f2}
+.sent{border-radius:5px;padding:1px 2px;transition:background .25s,color .25s}
+.sent.hi{background:linear-gradient(0deg,rgba(40,178,196,.26),rgba(40,178,196,.26));color:#fff;
+  box-shadow:0 0 0 3px rgba(40,178,196,.12)}
+
+.block{display:none}
+.block.on{display:block}
+
+.kws{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.kw{font-size:12.5px;color:var(--fg);background:rgba(255,255,255,.05);border:1px solid var(--line);
+  border-radius:999px;padding:6px 13px}
+.kw::before{content:"#";color:var(--accent);margin-right:3px}
+
+.ednote{margin-top:36px;border-left:3px solid transparent;border-image:var(--grad) 1;
+  background:var(--surface2);border-radius:0 12px 12px 0;padding:16px 20px;
+  font-family:var(--font-serif-kr);font-weight:300;font-size:14.5px;color:var(--muted);line-height:1.7}
+.ednote .q{color:var(--fg);font-style:italic}
+
+.foot{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--faint)}
+.foot a{color:var(--teal);text-decoration:none}
+.nojs{font-size:12px;color:var(--faint);margin-top:9px;display:none}
+
+@media (prefers-reduced-motion:reduce){.sent{transition:none}.status.reading .live{animation:none}}
+</style>
+
+<div class="topbar">
+  <img src="__LOGO__" alt="JDTREA">
+  <div class="vol">Vol. <b>5</b> · No. <b>2</b> · 2025</div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="bar"></div>
+    <div class="eyebrow"><span class="num">__NUM__</span> Research Article</div>
+    <h1 class="title-en">__TITLE_EN__</h1>
+    <div class="byline">__AUTHOR__<span class="aff">__AFF__</span></div>
+    <span class="pagechip">JDTREA 5.2 · __PAGE__</span>
+  </div>
+
+  <div class="reader" id="reader">
+    <div class="row">
+      <button class="pbtn" id="play"><svg id="pic" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span id="plabel">초록 읽어주기</span></button>
+      <button class="sbtn" id="stop" title="정지" aria-label="정지"><svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg></button>
+      <div class="langseg" id="langseg">
+        <button data-lang="en" class="on">EN 초록</button>
+        <button data-lang="ko">한글 요약</button>
+      </div>
+    </div>
+    <div class="status" id="status"><span class="live"></span><span id="statustext">음성으로 읽어 드립니다. 버튼을 누르세요.</span></div>
+    <div class="nojs" id="nojs">이 브라우저는 음성 합성을 지원하지 않습니다. 아래 텍스트를 직접 읽어 주세요.</div>
+  </div>
+
+  <div class="block on" id="abs">
+    <div class="sectionlabel">Abstract · 초록</div>
+    <div class="body-en">__ABSTRACT__</div>
+    <div class="sectionlabel">Keywords</div>
+    <div class="kws">__KEYWORDS__</div>
+  </div>
+
+  <div class="block" id="sum">
+    <div class="sectionlabel">한국어 요약</div>
+    <div class="body-kr">__SUMMARY__</div>
+  </div>
+
+  <div class="ednote">편집장 노트 — <span class="q">“__EDNOTE__</div>
+
+  <div class="foot">
+    <span>Journal of Daesoon Thought &amp; the Religions of East Asia</span>
+    <a href="https://www.jdre.org" target="_blank" rel="noopener">www.jdre.org</a>
+  </div>
+</div>
+
+<script>
+const synth = window.speechSynthesis || null;
+const PIC=document.getElementById('pic'), PLABEL=document.getElementById('plabel');
+const PLAY='M8 5v14l11-7z', PAUSE='M6 5h4v14H6zM14 5h4v14h-4z';
+const statusEl=document.getElementById('status'), statusTxt=document.getElementById('statustext');
+let curLang='en', pos=0, reading=false, paused=false, voice=null;
+
+function langTag(){ return curLang==='en' ? 'en-US' : 'ko-KR'; }
+function pickVoice(){ if(!synth)return; try{ const vs=synth.getVoices()||[]; const p=langTag().slice(0,2);
+  voice = vs.find(v=>v.lang&&v.lang.toLowerCase()===langTag().toLowerCase())
+       || vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith(p)) || null; }catch(e){} }
+if(synth){ pickVoice(); try{ synth.onvoiceschanged=pickVoice; }catch(e){} }
+
+function activeBlock(){ return curLang==='en' ? document.getElementById('abs') : document.getElementById('sum'); }
+function sents(){ return Array.from(activeBlock().querySelectorAll('.sent')); }
+function clearHi(){ document.querySelectorAll('.sent.hi').forEach(e=>e.classList.remove('hi')); }
+function highlight(i){ clearHi(); const s=sents()[i]; if(s){ s.classList.add('hi');
+  try{ s.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){} } }
+
+function setUI(){
+  PIC.setAttribute('d', (reading&&!paused)?PAUSE:PLAY);
+  PLABEL.textContent = (reading&&!paused) ? '일시정지'
+    : (paused ? '이어 읽기' : (curLang==='en'?'초록 읽어주기':'요약 읽어주기'));
+  statusEl.classList.toggle('reading', reading&&!paused);
+  statusTxt.textContent = !reading ? (curLang==='en'?'영문 초록을 읽어 드립니다.':'한국어 요약을 읽어 드립니다.')
+    : (paused ? '일시정지됨 — 이어서 들으려면 버튼을 누르세요.' : (curLang==='en'?'영문 초록을 읽는 중…':'한국어 요약을 읽는 중…'));
+}
+
+function speakFrom(i){
+  const arr=sents();
+  if(i>=arr.length){ reading=false; paused=false; pos=0; clearHi(); setUI(); statusTxt.textContent='낭독을 마쳤습니다.'; return; }
+  pos=i; highlight(i);
+  const u=new SpeechSynthesisUtterance(arr[i].textContent);
+  u.lang=langTag(); if(voice)u.voice=voice; u.rate=curLang==='en'?0.98:1.0; u.pitch=1;
+  u.onend=()=>{ if(reading&&!paused && pos===i){ speakFrom(i+1); } };
+  try{ synth.speak(u); }catch(e){}
+}
+function start(){ if(!synth)return; pickVoice(); try{synth.cancel();}catch(e){} reading=true; paused=false; setUI(); speakFrom(pos||0); }
+function pause(){ paused=true; try{synth.cancel();}catch(e){} setUI(); }
+function resume(){ paused=false; setUI(); speakFrom(pos); }
+function stop(){ reading=false; paused=false; pos=0; try{synth.cancel();}catch(e){} clearHi(); setUI(); }
+
+document.getElementById('play').onclick=()=>{
+  if(!synth)return;
+  if(!reading) start();
+  else if(!paused) pause();
+  else resume();
+};
+document.getElementById('stop').onclick=stop;
+
+document.querySelectorAll('#langseg button').forEach(b=>{
+  b.onclick=()=>{
+    const lang=b.getAttribute('data-lang'); if(lang===curLang)return;
+    stop(); curLang=lang;
+    document.querySelectorAll('#langseg button').forEach(x=>x.classList.toggle('on', x===b));
+    document.getElementById('abs').classList.toggle('on', lang==='en');
+    document.getElementById('sum').classList.toggle('on', lang==='ko');
+    pickVoice(); setUI();
+  };
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space' && e.target===document.body){ e.preventDefault(); document.getElementById('play').click(); }
+});
+
+if(!synth){ document.getElementById('nojs').style.display='block'; document.getElementById('play').disabled=true; document.getElementById('play').style.opacity=.5; }
+setUI();
+</script>
